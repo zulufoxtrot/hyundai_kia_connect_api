@@ -93,7 +93,7 @@ class VehicleManager:
             self.initialize()
         if self.api.token.valid_until <= dt.datetime.now(pytz.utc):
             _LOGGER.debug(f"{DOMAIN} - Refresh token expired")
-            self.api.login(self.username, self.password)
+            self.api.login(self.username, self.password, self.pin)
             self.api.refresh_vehicles(self.vehicles)
             return True
         return False
